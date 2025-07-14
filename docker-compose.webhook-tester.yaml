@@ -3,9 +3,9 @@
 services:
   webhook-tester:
     container_name: ddev-${DDEV_SITENAME}-webhook-tester
-    image: ${WEBHOOK_TESTER_DOCKER_IMAGE:-busybox:stable}
-    command: tail -f /dev/null
-    restart: "no"
+    image: ghcr.io/tarampampam/webhook-tester
+    restart: "unless-stopped"
+    networks: [default, ddev_default]
     # These labels ensure this service is discoverable by DDEV.
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
@@ -14,3 +14,7 @@ services:
     volumes:
       - ".:/mnt/ddev_config"
       - "ddev-global-cache:/mnt/ddev-global-cache"
+    environment:
+      VIRTUAL_HOST: "webhook-tester.$DDEV_HOSTNAME"
+      HTTP_EXPOSE: "80:8080"
+      AUTO_CREATE_SESSIONS: true

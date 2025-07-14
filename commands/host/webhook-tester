@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+## #ddev-generated: If you want to edit and own this file, remove this line.
+## Description: Launch a browser with "Webhook Tester"
+## Usage: webhook-tester
+## Example: "ddev webhook-tester"
+
+ddev launch --browser --url "http://webhook-tester.$DDEV_HOSTNAME"

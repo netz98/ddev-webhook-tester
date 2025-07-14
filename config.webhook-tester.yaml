@@ -1,0 +1,5 @@
+#ddev-generated
+hooks:
+  post-start:
+    - exec-host: curl "http://webhook-tester.$DDEV_HOSTNAME/00000000-0000-0000-0000-000000000000"
+    - exec-host: curl -X DELETE "http://webhook-tester.$DDEV_HOSTNAME/api/session/00000000-0000-0000-0000-000000000000/requests"

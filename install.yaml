@@ -2,5 +2,7 @@ name: webhook-tester
 
 project_files:
   - docker-compose.webhook-tester.yaml
+  - config.webhook-tester.yaml
+  - commands/host/webhook-tester
 
 ddev_version_constraint: '>= v1.24.3'
